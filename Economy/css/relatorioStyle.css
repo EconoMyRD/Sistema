@@ -1,0 +1,12 @@
+fieldset{
+    border: 2px solid black;
+    display: inline;
+}
+
+label{
+    margin-right: 15px;
+}
+label input{
+    margin-right: 10px;
+    margin-left: 10px;
+}
