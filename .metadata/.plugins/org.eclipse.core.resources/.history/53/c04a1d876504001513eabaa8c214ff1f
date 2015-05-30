@@ -1,0 +1,40 @@
+package br.com.economy.DAO;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.com.economy.util.HibernateUtil;
+
+import com.google.gson.Gson;
+
+public class SubCategoryDAO {
+	public String getSubcategories(int category_id){
+		
+		EntityManager em = HibernateUtil.getEntityManager();
+		
+		Query query = em.createNativeQuery("select nome, subcategoria_id as id from subcategoria where categoria_id = ?");
+		query.setParameter(1, category_id);
+		
+		List<String> list = query.getResultList();
+		for (int i=0;i<list.size();i++) {
+			System.out.println(list.get(i).toString());
+			
+		}
+//		String[] str = new String[6];
+//		System.out.println(list.size());
+//		list.toArray(str);
+		
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(list);
+		
+				
+		
+		System.out.println("json:" + json);	
+		
+		return json;
+	}
+}

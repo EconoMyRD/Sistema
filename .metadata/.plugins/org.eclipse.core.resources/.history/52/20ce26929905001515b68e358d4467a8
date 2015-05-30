@@ -1,0 +1,16 @@
+document.getElementById('submit').addEventListener('click', 
+		function getRelatory() {
+			var dateStar = document.getElementById('dateStar').value;
+			var dateEnd = document.getElementById('dateEnd').value;
+			var category = document.getElementById('category');
+			
+			getDataForGraphic(dateStart, dateEnd, category);
+		});
+
+function getDataForGraphic(dateStart, dateEnd, category){
+	var ajax = ajaxInit();
+	var url = 'http://localhost:8080/Economy/servletRelatory?dateStart' +
+			dateStart + '&dateEnd' + dateEnd + '&category' + category;
+	ajax.open('GET', url,true);
+	ajax.send();
+}

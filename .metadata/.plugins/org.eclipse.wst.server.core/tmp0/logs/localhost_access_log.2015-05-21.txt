@@ -1,0 +1,17 @@
+127.0.0.1 - - [21/May/2015:21:15:09 -0300] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [21/May/2015:21:16:41 -0300] "GET /favicon.ico HTTP/1.1" 404 973
+127.0.0.1 - - [21/May/2015:21:16:43 -0300] "GET /Economy/javascript/novoLancamento.js HTTP/1.1" 304 -
+127.0.0.1 - - [21/May/2015:21:17:05 -0300] "GET /Economy/servlet?description=teste&value=1000&subtype=1&date_transaction=2015-05-21 HTTP/1.1" 500 23
+127.0.0.1 - - [21/May/2015:21:21:10 -0300] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [21/May/2015:21:22:02 -0300] "GET /Economy/servlet?description=teste&value=1000&subtype=1&date_transaction=2015-05-21 HTTP/1.1" 500 23
+127.0.0.1 - - [21/May/2015:21:30:28 -0300] "GET /Economy/javascript/novoLancamento.js HTTP/1.1" 304 -
+127.0.0.1 - - [21/May/2015:21:30:38 -0300] "GET /Economy/servlet?description=teste&value=1000&subtype=1&date_transaction=2015-05-21 HTTP/1.1" 500 23
+127.0.0.1 - - [21/May/2015:21:31:23 -0300] "GET /Economy/servlet?description=teste&value=1000&subtype=1&date_transaction=2015-05-21 HTTP/1.1" 500 23
+127.0.0.1 - - [21/May/2015:21:32:00 -0300] "GET /Economy/servlet?description=teste&value=1000&subtype=1&date_transaction=21-05-2015 HTTP/1.1" 500 23
+127.0.0.1 - - [21/May/2015:21:32:30 -0300] "GET /Economy/servlet?description=teste&value=1000&subtype=1&date_transaction=21/05/2015 HTTP/1.1" 500 1668
+127.0.0.1 - - [21/May/2015:21:32:48 -0300] "GET /Economy/servlet?description=teste&value=1000&subtype=1&date_transaction=21/05/2015 HTTP/1.1" 500 1668
+127.0.0.1 - - [21/May/2015:21:34:21 -0300] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [21/May/2015:21:34:41 -0300] "GET /Economy/servlet?description=teste&value=1000&subtype=1&date_transaction=21/05/2015 HTTP/1.1" 500 3769
+127.0.0.1 - - [21/May/2015:21:47:15 -0300] "GET /Economy/servlet?description=teste&value=1000&subtype=1&date_transaction=21/05/2015 HTTP/1.1" 500 1668
+127.0.0.1 - - [21/May/2015:21:51:22 -0300] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [21/May/2015:21:51:52 -0300] "GET /Economy/servlet?description=teste&value=1000&subtype=1&date_transaction=21/05/2015 HTTP/1.1" 500 3769

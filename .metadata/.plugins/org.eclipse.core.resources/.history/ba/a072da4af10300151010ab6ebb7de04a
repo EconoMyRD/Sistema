@@ -1,0 +1,82 @@
+var doc= this.document;
+
+doc.getElementById('category').addEventListener('change',
+    function getOptions(){
+        var category =doc.getElementById('category');
+        var selected = String(category.options[category.selectedIndex].value);
+        alert('selecionou' + selected);
+        var itens = getSubcategories(selected);
+    
+        //receber os valores e inserir no form
+    }                            
+    );
+
+
+function getSubcategories(select){    
+    var ajax = ajaxInit();
+    ajax.onreadystatechange = function(subcategories){
+    	//aki vai receber o json do java e coloccar no selecet
+    	
+    	if (ajax.readyState==4 && ajax.status==200)
+        {
+    		var subcategories = ajax.responseText();
+    		alert(subcategories.stringify());
+//    		var html= "";
+//    		for (var i = 0; i < subcategories.length; i++) {
+//    			html+='<option value = "';
+//    			html+=subcategories.
+//    				
+//    			html+='</option>';
+//    				
+//			}    		
+        }
+    };
+    if (ajax){
+        var url= 'http://localhost:8080/Economy/getSubcategories?select=' + select;
+        ajax.open('GET', url, true);
+        alert(select);
+        ajax.send();
+    }
+}
+
+
+// get values from form
+doc.getElementById('submit').addEventListener('click', 
+        function getValues(){
+            var description = doc.getElementById('description').value;
+            var value = doc.getElementById('value').value;
+            //var category =doc.getElementById('category');
+            //var selected = String(category.options[category.selectedIndex].value);
+            var subcategory  = doc.getElementById('subcategory');
+            var selectedSub = String(subcategory.options[subcategory.selectedIndex].value);
+            var date = String(doc.getElementById('date_transaction').value);  
+           
+            // formating date;
+            formatDate = formatDate(date);
+            alert(formatDate);
+            
+            salvarBancoDados(description,value,selectedSub,formatDate);
+           
+		}
+);
+
+//format date (dd/mm/yyyy)  for send to backend
+function  formatDate(input){
+	var p = input.split(/\D/g);
+	var result = [p[2],p[1],p[0]].join("/");   
+    
+    return result;
+};
+
+function salvarBancoDados(description,value, subcategory,date){
+    
+    var ajax= ajaxInit();
+    if(ajax){
+    	
+    	//url do servelet com parametros
+    	//alert(description+value+type+date);
+        url='http://localhost:8080/Economy/servlet?description='+description + '&value=' + value + '&subcategory=' + subcategory + '&date_transaction=' + date;   
+        ajax.open('GET', url,true);
+        ajax.send();
+    };
+};

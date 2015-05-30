@@ -1,0 +1,9 @@
+package br.com.economy.DAO;
+
+public class teste {
+	public static void main(String[] args) {
+		SubCategoryDAO dao= new SubCategoryDAO();
+		
+		dao.getSubcategories(2);
+	}
+}

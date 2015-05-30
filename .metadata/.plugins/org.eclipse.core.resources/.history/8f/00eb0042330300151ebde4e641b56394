@@ -1,0 +1,26 @@
+package br.com.economy.DAO;
+
+import java.io.StringWriter;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import br.com.economy.entities.SubCategory;
+import br.com.economy.util.HibernateUtil;
+
+public class SubCategoryDAO {
+	public List<String> getSubcategories(int category_id){
+		EntityManager em = HibernateUtil.getEntityManager();
+		
+		Query query = em.createNativeQuery("select nome as nome, subcategoria_id as id from subcategoria where categoria_id = ?");
+		query.setParameter(1, category_id);
+		
+		List<String> result = query.getResultList();
+	
+		for (String s : result) {
+			System.out.println(s.nome +" " + s.id);
+		}
+		return result;
+	}
+}
