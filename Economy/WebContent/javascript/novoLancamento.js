@@ -1,15 +1,15 @@
 var doc= this.document;
 
-doc.getElementById('category').addEventListener('change',
-    function getOptions(){
-        var category =doc.getElementById('category');
-        var selected = String(category.options[category.selectedIndex].value);
-        
-        getSubcategories(selected);
+doc.getElementById('category').addEventListener('change',getOptionsSubcategory);
+	
+
+function getOptionsSubcategory(){
+    var category =doc.getElementById('category');
+    var selected = String(category.options[category.selectedIndex].value);
     
-        //receber os valores e inserir no form
-    }                            
-    );
+    getSubcategories(selected);
+}                            
+    
 
 
 function getSubcategories(select){    
@@ -78,3 +78,45 @@ function salvarBancoDados(description,value, subcategory,date){
         ajax.send();
     };
 };
+
+
+document.getElementById("category").addEventListener('load',getCategories());
+
+
+function getCategories() {
+	var ajax = ajaxInit();
+	var url = 'http://localhost:8080/Economy/ServletCategory';
+	ajax.open('GET', url, true);
+	ajax.send();
+	
+	ajax.onreadystatechange = function(){
+		var json = ajax.responseText;
+		if (ajax.readyState==4 && ajax.status==200)
+			insertCategories(json);
+	};	
+}
+
+
+function insertCategories(json) {		
+		var categories = JSON.parse(json);
+		var html= "";
+		for (var i in categories) {
+			html+= '<option value = "';
+			html+= categories[i].id + '">';
+			html+= categories[i].nome;
+			html += '</option>';   				    				
+		}  		
+		doc.getElementById('category').innerHTML = html;
+		
+		//get the options for subCategories
+		getOptionsSubcategory();
+		
+}
+
+
+
+
+
+
+
+

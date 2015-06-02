@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee"
-	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" metadata-complete="true" version="3.0">
 	<display-name>Economy</display-name>
@@ -15,8 +14,7 @@
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>ServletTransaction</servlet-name>
-		<servlet-class>br.com.economy.servlet.ServletTransaction
-		</servlet-class>
+		<servlet-class>br.com.economy.servlet.ServletTransaction</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ServletTransaction</servlet-name>
@@ -39,7 +37,18 @@
 		<servlet-name>ServletRelatory</servlet-name>
 		<url-pattern>/ServletRelatory</url-pattern>
 	</servlet-mapping>
-	
+
+
+	<servlet>
+		<servlet-name>GetCategory</servlet-name>
+		<servlet-class>br.com.economy.servlet.GetCategory</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCategory</servlet-name>
+		<url-pattern>/ServletCategory</url-pattern>
+	</servlet-mapping>
+
+
 	<error-page>
 		<error-code>404</error-code>
 		<location>/WebContent/html/404.html</location>

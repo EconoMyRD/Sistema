@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.economy.DAO.TransacaoDao;
+import br.com.economy.DAO.TransactionDAO;
 import br.com.economy.entities.Transacao;
 
 public class ServletTransaction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	TransacaoDao transacaoDAO = new TransacaoDao();
+	TransactionDAO transacaoDAO = new TransactionDAO();
 
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -71,7 +71,8 @@ public class ServletTransaction extends HttpServlet {
 		transaction.setDataTransacao(date_transaction);
 		transaction.setDataRegistro(date_register);
 		transaction.setDescricao(description);
-		transaction.setSubcategoriaId(subcategory);
+		//transaction.s(subcategory);
+		//instanciar objeto subcategoria com dados do banco para setar este atributo 
 		transaction.setUsuarioId(user);
 		
 		//persist on data base

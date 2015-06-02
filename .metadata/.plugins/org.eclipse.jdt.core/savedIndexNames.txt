@@ -50,13 +50,13 @@ INDEX VERSION 1.126+C:\Users\note ricardo\Desktop\economy novo\.metadata\.plugin
 166045448.index
 1299022128.index
 1503623569.index
-305854171.index
 3207321241.index
-4155206848.index
+305854171.index
+1017813738.index
 3786190978.index
 522063595.index
 1697886153.index
-1017813738.index
+4155206848.index
 3140557924.index
 3133528496.index
 908367771.index
@@ -68,8 +68,8 @@ INDEX VERSION 1.126+C:\Users\note ricardo\Desktop\economy novo\.metadata\.plugin
 482995963.index
 1498219845.index
 1504696005.index
-524827553.index
 1776624379.index
+524827553.index
 166707718.index
 3119674621.index
 163172794.index

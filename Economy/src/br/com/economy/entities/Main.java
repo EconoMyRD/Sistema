@@ -6,7 +6,7 @@ import javax.persistence.Column;
 
 import br.com.economy.DAO.CategoriaDao;
 import br.com.economy.DAO.LogDao;
-import br.com.economy.DAO.TransacaoDao;
+import br.com.economy.DAO.TransactionDAO;
 import br.com.economy.DAO.UsuarioDao;
 
 public class Main 

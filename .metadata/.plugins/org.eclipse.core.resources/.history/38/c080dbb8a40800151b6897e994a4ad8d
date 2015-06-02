@@ -1,0 +1,9 @@
+package br.com.economy.DAO;
+
+public class teste {
+	public static void main(String[] args) {
+		TransactionDAO dao =  new TransactionDAO();
+		
+		String a = dao.getDataForGraphic("1/1/2014", "1/1/2016", 1);
+	}
+}
