@@ -26,23 +26,23 @@ import javax.persistence.TemporalType;
 @SqlResultSetMapping(name="getTransactions", entities ={ 
 		@EntityResult(entityClass = Transacao.class,
 		fields={
-			@FieldResult(name = "id", column = "transacao_id"),
-			@FieldResult(name = "subcategoriaId", column = "subcategoriaId"),
+			@FieldResult(name = "transacao_id", column = "transacao_id"),
+			@FieldResult(name = "subcategoria", column = "subcategoria"),
 			@FieldResult(name = "categoria_id", column = "categoria_id"),
-			@FieldResult(name = "usuarioId", column = "usuarioId"),
+			@FieldResult(name = "usuario", column = "usuario"),
 			@FieldResult(name = "descricao", column = "descricao"),
 			@FieldResult(name = "data_transacao", column = "data_transacao"),
-			@FieldResult(name = "dataRegistro", column = "data_registro"),
+			@FieldResult(name = "data_registro", column = "data_registro"),
 			@FieldResult(name = "valor", column = "valor")
 		})
 //	,
 //	@EntityResult(entityClass = SubCategory.class,
 //	fields={
-//		@FieldResult(name = "id", column = "subcategoria_id"),
+//		@FieldResult(name = "id", column = "id"),
 //		@FieldResult(name = "nome", column = "nome"),
 //		@FieldResult(name = "categoria_id", column = "categoria_id")
 //	}
-//	)
+	//)
 }
 )
 
@@ -51,23 +51,23 @@ import javax.persistence.TemporalType;
 public class Transacao implements Serializable 
 {
 	@Id
-	@Column(name="TRANSACAO_ID")	
+	@Column(name="transacao_id")	
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sequence_id")
 	@SequenceGenerator(name = "sequence_id", allocationSize = 1, sequenceName = "transacao_id_seq")
 	private Integer id;
 
 
-	//@Column(name="SUBCATEGORIA")
-	@OneToOne(fetch = FetchType.LAZY,targetEntity = Transacao.class)
-	@PrimaryKeyJoinColumn
+//	@OneToOne(fetch = FetchType.LAZY,targetEntity = SubCategory.class)
+//	@PrimaryKeyJoinColumn
+	//private SubCategory subcategoria;
 	private int subcategoria;
 	@Column(name="USUARIO")
-	private Integer usuarioId;
+	private int usuarioId;
 	private String descricao;
 	@Column(name="DATA_TRANSACAO")
 	@Temporal(TemporalType.DATE)
 	private Date data_transacao;
-	private Float valor;
+	private float valor;
 	@Column(name="DATA_REGISTRO")
 	@Temporal(TemporalType.DATE)
 	private Date dataRegistro;
@@ -82,15 +82,15 @@ public class Transacao implements Serializable
 		return id;
 	}
 	
-	public Integer getSubcategoriaId() 
+	public int getSubcategoriaId() 
 	{
 		return subcategoria;
 	}
-	public void setSubcategoriaId(Integer subcategoriaId) 
+	public void setSubcategoriaId(int subcategoriaId) 
 	{
-		this.subcategoria= subcategoriaId;
+		this.subcategoria = subcategoriaId;
 	}
-	public Integer getUsuarioId() 
+	public int getUsuarioId() 
 	{
 		return usuarioId;
 	}
@@ -114,11 +114,11 @@ public class Transacao implements Serializable
 	{
 		this.data_transacao = dataTransacao;
 	}
-	public Float getValor() 
+	public float getValor() 
 	{
 		return valor;
 	}
-	public void setValor(Float valor) 
+	public void setValor(float valor) 
 	{
 		this.valor = valor;
 	}

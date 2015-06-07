@@ -31,7 +31,7 @@ public class CategoriaDao
 		Gson gson =  new Gson();
 		String json = gson.toJson(list);
 		
-		System.out.println(json);
+		//System.out.println(json);
 		return json;
 	}
 	

@@ -1,0 +1,26 @@
+package br.com.economy.DAO;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+public class teste {
+	public static void main(String[] args) {
+		TransactionDAO dao =  new TransactionDAO();
+		String datee =  "1/1/2020";
+		String dates = "1/2/2014";
+		Date dateStart =  new Date();
+		Date dateEnd = new Date();
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			dateStart = sdf.parse(dates);
+			 dateEnd = sdf.parse(datee);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(dateStart);
+		String a = dao.getDataForGraphic(dateStart ,dateEnd, 2);
+	}
+}

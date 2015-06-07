@@ -1,0 +1,63 @@
+package br.com.economy.servlet;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.com.economy.DAO.TransactionDAO;
+
+public class ServletRelatory extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	TransactionDAO DAO = new TransactionDAO();
+    
+    public ServletRelatory() {
+        super();
+    }
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		Date dateEnd = new Date();
+		Date dateStart = new Date();
+		int category =0;
+		String ds, de;
+		 ds = request.getParameter("dateStart");
+			System.out.println(ds);
+			
+			 de = request.getParameter("dateEnd");
+			System.out.println(de);
+			
+			String c = request.getParameter("category");
+			System.out.println(c);
+			
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			
+			
+			category = Integer.parseInt(c);
+			dateStart = sdf.parse(ds);
+			dateEnd = sdf.parse(de);
+		} catch (ParseException e) {
+			//impossible have wrong parameters
+			e.printStackTrace();
+		}
+		System.out.println(category);
+		System.out.println(dateStart);
+		System.out.println(dateEnd);
+		DAO.getDataForGraphic(dateStart, dateEnd, category);
+		
+	}
+
+
+	
+	
+	
+
+}

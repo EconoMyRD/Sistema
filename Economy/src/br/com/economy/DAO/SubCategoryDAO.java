@@ -15,7 +15,7 @@ public class SubCategoryDAO {
 		
 		EntityManager em = HibernateUtil.getEntityManager();
 		
-		Query query = em.createNativeQuery("select nome, subcategoria_id as id, categoria_id from "
+		Query query = em.createNativeQuery("select nome, subcategoria_id, categoria_id from "
 				+ "subcategoria where categoria_id = ?", "getSubcategories");
 		query.setParameter(1, category_id);
 		
@@ -29,7 +29,7 @@ public class SubCategoryDAO {
 		
 				
 		
-		System.out.println("json:" + json);	
+		//System.out.println("json:" + json);	
 		
 		return json;
 	}

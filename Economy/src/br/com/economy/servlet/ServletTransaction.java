@@ -23,12 +23,9 @@ public class ServletTransaction extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		//System.out.println("teste: " + request.getParameterMap());
-
-		PrintWriter out = response.getWriter();
+		System.out.println("estou no doget");
 
 		// get values from the parameter request
-	
 		String description = request.getParameter("description");
 		String valueString = request.getParameter("value");
 		String date_transactionString = request.getParameter("date_transaction");
@@ -37,26 +34,27 @@ public class ServletTransaction extends HttpServlet {
 		float value;
 		int subcategory;
 		int user = 1;
-
+		
+		System.out.println("date_transactionString" + date_transactionString);
 		try {
 			// conversions
 			
 			value = Float.parseFloat(valueString);
 			subcategory = Integer.parseInt(request.getParameter("subcategory"));
 
-			out.println(description + " " + value + " "
-					+ date_transactionString);
+//			out.println(description + " " + value + " "
+//					+ date_transactionString);
 			// conversion for date
 
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");			
 			date_transaction = sdf.parse(date_transactionString);
-		    
-			
+			System.out.println("date_transacrion" + date_transaction);
+			System.out.println("date_register" + date_register);
+			System.out.println(subcategory);
 			
 			persistOnDataBase(value,date_transaction, date_register, description,subcategory,user);
 
 		} catch (ParseException e) {
-			out.println("date conversion error");
 			e.printStackTrace();
 		}
 
@@ -71,10 +69,10 @@ public class ServletTransaction extends HttpServlet {
 		transaction.setDataTransacao(date_transaction);
 		transaction.setDataRegistro(date_register);
 		transaction.setDescricao(description);
-		//transaction.s(subcategory);
+		transaction.setSubcategoriaId(subcategory);
 		//instanciar objeto subcategoria com dados do banco para setar este atributo 
 		transaction.setUsuarioId(user);
-		
+		System.out.println("lets go insert");
 		//persist on data base
 		transacaoDAO.Insert(transaction);
 

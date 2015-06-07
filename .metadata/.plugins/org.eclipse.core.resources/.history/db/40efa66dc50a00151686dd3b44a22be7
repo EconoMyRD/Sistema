@@ -1,0 +1,87 @@
+document.getElementById('submit').addEventListener('click', getRelatory);
+
+document.getElementById('category').addEventListener('load',getCategories());
+
+function getCategories() {
+	var ajax = ajaxInit();
+	var url = 'http://localhost:8080/Economy/ServletCategory';
+	ajax.open('GET', url, true);
+	ajax.send();
+	
+	ajax.onreadystatechange = function(){
+		var json = ajax.responseText;
+		if (ajax.readyState==4 && ajax.status==200)
+			insertCategories(json);
+	};	
+}
+
+
+function insertCategories(json) {
+		var categories = JSON.parse(json);
+		var html= "";
+		for (var i in categories) {
+			html+= '<option value = "';
+			html+= categories[i].id + '">';
+			html+= categories[i].nome;
+			html += '</option>';   				    				
+		}  		
+		document.getElementById('category').innerHTML = html;
+}
+function getRelatory() {
+	var dateS = document.getElementById('dateStart').value;
+	var dateE = document.getElementById('dateEnd').value;
+	var category = document.getElementById('category').value;
+
+	var dateStart = formatDate(dateS);
+	var dateEnd =  formatDate(dateE);
+	
+	getDataForGraphic(dateStart, dateEnd, category);
+	
+	
+};
+
+
+function makeGraphic(json) {
+	google.load('visualization', '1', {'packages':['corechart']});
+	google.setOnLoadCallback(drawChart(json));
+};
+
+// value name date subcategoria categoria
+function drawChart(jsonString) {
+	
+	var json = JSON.parse(jsonString);
+	alert(json);
+	var data = new google.visualization.DataTable();
+    data.addColumn('String', 'categoria');
+    data.addColumn('float' , 'valor');
+    for (var i = 0; i < json.size(); i++) {
+		data.addRow([json.category, json.value]);
+	} 
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+    chart.draw(data);
+}
+
+function formatDate(input) {
+	var p = input.split(/\D/g);
+	var result = [ p[2], p[1], p[0] ].join("/");
+
+	return result;
+};
+
+function getDataForGraphic(dateStart, dateEnd, category) {
+	var ajax = ajaxInit();
+	if(ajax){
+		var url = 'http://localhost:8080/Economy/ServletRelatory?dateStart='
+				+ dateStart + '&dateEnd=' + dateEnd + '&category=' + category;
+		ajax.open('GET', url, true);
+		ajax.send();
+	}
+	ajax.onreadystatechange = function(){
+		 alert(ajax.readyState);
+		 if (ajax.readyState==4 && ajax.status==200){
+				var json = ajax.responseText;
+				alert(json);
+				makeGraphic(json);
+			 }
+	 };
+};

@@ -52,7 +52,7 @@ doc.getElementById('submit').addEventListener('click',
             // formating date;
             formatDate = formatDate(date);
             
-            
+            alert(date + formatDate);
             salvarBancoDados(description,value,selectedSub,formatDate);
            
 		}
@@ -67,14 +67,12 @@ function  formatDate(input){
 };
 
 function salvarBancoDados(description,value, subcategory,date){
-    
     var ajax= ajaxInit();
     if(ajax){
-    	
     	//url do servlet com parametros
-    	//alert(description+value+type+date);
-        url='http://localhost:8080/Economy/servlet?description='+description + '&value=' + value +  '&subcategory=' + subcategory + '&date_transaction=' + date;   
-        ajax.open('GET', url,true);
+        var url='http://localhost:8080/Economy/servlet?description='+description + '&value=' + value +  '&subcategory=' + subcategory + '&date_transaction=' + date;   
+        alert(url);
+        ajax.open('GET', url, false);
         ajax.send();
     };
 };
@@ -90,8 +88,8 @@ function getCategories() {
 	ajax.send();
 	
 	ajax.onreadystatechange = function(){
-		var json = ajax.responseText;
 		if (ajax.readyState==4 && ajax.status==200)
+			var json = ajax.responseText;
 			insertCategories(json);
 	};	
 }

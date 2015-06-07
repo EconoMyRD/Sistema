@@ -1,0 +1,39 @@
+function getDataForGraphic(dateStart, dateEnd, category) {
+	var ajax = ajaxInit();
+	if(ajax){
+		var url = 'http://localhost:8080/Economy/ServletRelatory?dateStart='
+				+ dateStart + '&dateEnd=' + dateEnd + '&category=' + category;
+		ajax.open('GET', url, true);
+    	ajax.send();
+    }
+    ajax.onreadystatechange = function(){
+    	if (ajax.readyState==4 && ajax.status==200)
+        {
+    		var json = ajax.responseText;
+			alert(json);
+			makeGraphic(json);
+		}
+	};
+};
+
+
+
+function makeGraphic(json) {
+	google.load('visualization', '1', {'packages':['corechart']});
+	google.setOnLoadCallback(drawChart(json));
+};
+
+
+// value name date subcategoria categoria
+function drawChart(jsonString) {
+	
+	var json = JSON.parse(jsonString);
+	var data = new google.visualization.DataTable();
+    data.addColumn('string', 'subcategoria');
+    data.addColumn('float' , 'valor');
+    for (var i = 0; i < json.size(); i++) {
+		data.addRow([json.name, json.value]);
+	} 
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+    chart.draw(data);
+}
