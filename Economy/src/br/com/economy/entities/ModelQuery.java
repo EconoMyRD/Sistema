@@ -4,16 +4,16 @@ package br.com.economy.entities;
 public class ModelQuery {
 	double value;
 	String name;
-	String date;
+	//String date;
 	int subcategory;
 	int category;
 	
 	
-	public ModelQuery(float value, String name, String date, int subcategory, int category) {
+	public ModelQuery(float value, String name, int subcategory, int category) {
 		super();
 		this.value = value;
 		this.name = name;
-		this.date = date;
+		//this.date = date;
 		this.subcategory = subcategory;
 		this.category = category;
 	}
@@ -30,12 +30,12 @@ public class ModelQuery {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
+//	public String getDate() {
+//		return date;
+//	}
+//	public void setDate(String date) {
+//		this.date = date;
+//	}
 	public long getSubcategoria() {
 		return subcategory;
 	}

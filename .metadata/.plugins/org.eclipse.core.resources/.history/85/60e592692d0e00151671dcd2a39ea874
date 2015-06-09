@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Economy</title>
+    <link rel="stylesheet" href="/css/novoLancamentoStyle.css">
+    <!-- <script type="text/javascript" src="/javascript/import.js"></script> -->
+    <link rel="import" href="/import/import.html">
+    <script type="text/javascript" src="/javascript/lancamento.js"> </script>
+</head>
+
+<body>
+
+<script>
+    var link = document.querySelector('link[rel="import"');
+    var content = link.import;
+
+    var el = content.querySelector('#commonContent');
+
+    document.body.appendChild(el.cloneNode(true));
+</script>
+<div id="content">
+
+
+<!--conteudo explicativo sobre lançametos-->
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit quam nesciunt, exercitationem esse fuga sapiente distinctio, nisi quos expedita ut. Molestiae dignissimos autem exercitationem libero nisi suscipit laboriosam odio accusamus.   </p>
+
+
+
+ <!--formulario para lancamento de despesa/receita-->
+<div id="lancamento"> 
+    <form action="">
+        <fieldset>
+            <legend>Lançamento</legend>
+
+            <label for="">
+                Descrição:
+                <input name="descricao" type="text" class="field">        
+            </label>
+
+            <label for="">
+                Valor:
+                <input type="text" class="field">        
+            </label>
+
+            <label for="">
+                Categoria:
+                <select name="categoria" id="categoria"></select>        
+            </label>
+
+            <label for="">
+                data:
+                <input type="date" class="field">  
+                <!--TODO: check list de parcelamento de contas,vai usar hora?? -->  
+            </label>
+            
+            <label for="">
+                <input name="submit" type="submit" value="Enviar">
+            </label>
+
+       </fieldset>
+    </form>
+</div>
+</div>
+</body>
+</html>

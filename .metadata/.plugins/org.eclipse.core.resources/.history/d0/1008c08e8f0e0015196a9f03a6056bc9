@@ -1,0 +1,46 @@
+function getDataForGraphic(dateStart, dateEnd, category) {
+	var ajax = ajaxInit();
+	if (ajax) {
+		var url = 'http://localhost:8080/Economy/ServletRelatory?dateStart='
+				+ dateStart + '&dateEnd=' + dateEnd + '&category=' + category;
+		ajax.open('GET', url, true);
+		ajax.send();
+	}
+	ajax.onreadystatechange = function() {
+		if (ajax.readyState == 4 && ajax.status == 200) {
+			// var json = ajax.responseText;
+			// alert(json);
+			makeGraphic(ajax);
+		}
+	};
+};
+
+function makeGraphic(ajax) {
+	alert(ajax.responseText);
+	//google.load('visualization', '1.0', {'packages':['corechart']});
+	google.setOnLoadCallback(drawChart(ajax));
+};
+
+function drawChart(ajax){
+	alert('entrei');
+	var jsonString = ajax.responseText;
+	var json = JSON.parse(jsonString);
+	
+	alert(json.length);
+	var data = new google.visualization.DataTable();
+	data.addColumn('string', 'subcategoria');
+	data.addColumn('number', 'valor');
+	for (var i = 0; i < json.length; i++) {
+		data.addRow([ json[i].name, json[i].value ]);
+	};
+	console.log(document.getElementById('chart_div'));
+	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+	var options = {
+		'width' : 500,
+		'height' : 500,
+		'title' : 'movimentacoes'
+	};
+
+	chart.draw(data,options);
+};
+
