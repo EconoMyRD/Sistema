@@ -71,8 +71,8 @@ function salvarBancoDados(description,value, subcategory,date){
     if(ajax){
     	//url do servlet com parametros
         var url='http://localhost:8080/Economy/servlet?description='+description + '&value=' + value +  '&subcategory=' + subcategory + '&date_transaction=' + date;   
-        alert(url);
-        ajax.open('GET', url, false);
+        
+        ajax.open('GET', url, true);
         ajax.send();
     };
 };
@@ -88,11 +88,12 @@ function getCategories() {
 	ajax.send();
 	
 	ajax.onreadystatechange = function(){
-		if (ajax.readyState==4 && ajax.status==200)
+		if (ajax.readyState==4 && ajax.status==200){
 			var json = ajax.responseText;
 			insertCategories(json);
-	};	
-}
+		};	
+	};
+};
 
 
 function insertCategories(json) {		

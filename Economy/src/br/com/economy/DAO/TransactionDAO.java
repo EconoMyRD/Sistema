@@ -23,14 +23,14 @@ EntityManager em = HibernateUtil.getEntityManager();
 	
 	public String getDataForGraphic(Date dateStart, Date dateEnd, int category){
 			
-			Query query = em.createNativeQuery("select  sum(t.valor) as value, s.nome as name, t.data_transacao as date, "
+			Query query = em.createNativeQuery("select  sum(t.valor) as value, s.nome as name, "// t.data_transacao as date, "
 				+ " s.subcategoria_id as subcategoria, s.categoria_id as categoria "
 				+ " from transacao t "
 				+ " join subcategoria s "
 				+ " on t.subcategoria = s.subcategoria_id "
 				+ " where s.categoria_id = ? "
 				+ " and t.data_transacao between ? and ? "
-				+ " group by s.nome, t.data_transacao, s.subcategoria_id, s.categoria_id");
+				+ " group by s.nome, s.subcategoria_id, s.categoria_id");
 		
 		query.setParameter(1, category);
 		query.setParameter(2, dateStart);
@@ -40,25 +40,25 @@ EntityManager em = HibernateUtil.getEntityManager();
 		list = query.getResultList();
 		//System.out.println(list.size());
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		List<ModelQuery> modelQuery = new ArrayList<ModelQuery>();
 		
 		for (int i =0 ;i< list.size(); i++) {
 			float value = Float.parseFloat(list.get(i)[0].toString());
 			String name = list.get(i)[1].toString();
 			int categoria = Integer.parseInt(list.get(i)[3].toString());
-			int subcategory = Integer.parseInt(list.get(i)[4].toString());
-			Date dateTemp = new Date();
-			String date ="";
-			try {
-				dateTemp = sdf.parse(list.get(i)[2].toString());
-				date = sdf.format(dateTemp);
-				
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			int subcategory = Integer.parseInt(list.get(i)[2].toString());
+//			Date dateTemp = new Date();
+//			String date ="";
+//			try {
+//				dateTemp = sdf.parse(list.get(i)[2].toString());
+//				date = sdf.format(dateTemp);
+//				
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			}
 			
-			ModelQuery model = new ModelQuery(value, name, date, subcategory, categoria);
+			ModelQuery model = new ModelQuery(value, name, subcategory, categoria);
 			//System.out.println(date);
 			modelQuery.add(model);
 		}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+	<meta charset="UTF-8">
+	<!-- <script type="text/javascript" src="javascript/import.js"></script> -->	
+	<link rel="import" href="import/import.html">
+	<title>Economy</title>
+</head>
+<body>
+
+<script>
+    var link = document.querySelector('link[rel="import"]');
+
+    var content = link.import;
+
+           
+    var el = content.querySelector('#commonContent');
+
+    document.body.appendChild(el.cloneNode(true));
+</script>
+</body>
+</html>
