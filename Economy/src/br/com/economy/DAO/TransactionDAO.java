@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import br.com.economy.entities.ModelDetailedGraphic;
 import br.com.economy.entities.ModelQuery;
 import br.com.economy.entities.Transacao;
 import br.com.economy.util.HibernateUtil;
@@ -70,6 +71,49 @@ EntityManager em = HibernateUtil.getEntityManager();
 		return json;
 	}
 	
+	
+	public String getDataForDetailedGraphic(Date dateS, Date dateE, String subcategory){
+		System.out.println( dateS.toString() + dateE.toString() + subcategory);
+		Query query = em.createNativeQuery("select t.valor as value, t.data_transacao as date "
+				+ " from transacao t "
+				+ " join subcategoria s "
+				+ " on t.subcategoria = s.subcategoria_id "
+				+ " where s.nome = ? "
+				+ " and t.data_transacao between ? and ? ");
+		
+		query.setParameter(1, subcategory);
+		query.setParameter(2, dateS);
+		query.setParameter(3, dateE);
+		
+		List<Object[]> list = new ArrayList<Object[]>();
+		list = query.getResultList();
+		//System.out.println(list.size());
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		List<ModelDetailedGraphic> modelList = new ArrayList<ModelDetailedGraphic>();
+		
+		for (int i =0 ;i< list.size(); i++) {
+			float value = Float.parseFloat(list.get(i)[0].toString());
+			String date= "";
+			try {
+				Date dateTemp = sdf.parse(list.get(i)[1].toString());
+				date = sdf.format(dateTemp);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+			
+			ModelDetailedGraphic model = new ModelDetailedGraphic(date, value) ;
+			modelList.add(model);
+		};		
+		
+		Gson gson = new  Gson();
+		String json = gson.toJson(modelList);
+		System.out.println(json);
+		return json;
+	}
+		
+		
 	public void Insert(Transacao transacao)
 	{
 		em.getTransaction().begin();

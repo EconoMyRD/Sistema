@@ -24,7 +24,6 @@
 <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
 <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
 <fullyQualifiedTypeName name="com.google.gson.Gson"/>
-<fullyQualifiedTypeName name="br.com.economy.DAO.TransactionDAO"/>
 <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
 <fullyQualifiedTypeName name="javax.persistence.Temporal"/>
 <fullyQualifiedTypeName name="javax.persistence.TypedQuery"/>
@@ -45,4 +44,6 @@
 <fullyQualifiedTypeName name="java.text.Format"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="br.com.economy.entities.ModelDetailedGraphic"/>
+<fullyQualifiedTypeName name="br.com.economy.DAO.TransactionDAO"/>
 </qualifiedTypeNameHistroy>

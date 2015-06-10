@@ -42,8 +42,8 @@ public class ServletRelatory extends HttpServlet {
 			e.printStackTrace();
 		}
 //		System.out.println(category);
-//		System.out.println(dateStart);
-//		System.out.println(dateEnd);
+		System.out.println(dateStart);
+		System.out.println(dateEnd);
 		String json = DAO.getDataForGraphic(dateStart, dateEnd, category);
 		out.write(json);
 	}
