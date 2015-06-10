@@ -1,0 +1,19 @@
+
+
+var GetDadosFormulario = 
+{
+	
+		init: function()
+		{
+			GetDadosFormulario.setForm();
+		},
+		
+		setForm: function()
+		{
+			var form = document.querySelector('form');
+			
+		}
+};
+
+
+GetDadosFormulario.init();

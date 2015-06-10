@@ -9,7 +9,6 @@
 <fullyQualifiedTypeName name="org.hibernate.procedure.internal.Util.ResultClassesResolutionContext"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="net.sf.json.JSONObject"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="br.com.economy.model.SubcategoriesModel"/>
 <fullyQualifiedTypeName name="javax.persistence.Entity"/>
@@ -31,7 +30,6 @@
 <fullyQualifiedTypeName name="br.com.economy.entities.SubCategory"/>
 <fullyQualifiedTypeName name="javax.persistence.MappedSuperclass"/>
 <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
-<fullyQualifiedTypeName name="javax.persistence.Query"/>
 <fullyQualifiedTypeName name="javax.persistence.PrimaryKeyJoinColumn"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.util.List"/>
@@ -46,4 +44,9 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="br.com.economy.entities.ModelDetailedGraphic"/>
 <fullyQualifiedTypeName name="br.com.economy.DAO.TransactionDAO"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.Boolean"/>
+<fullyQualifiedTypeName name="javax.persistence.Query"/>
+<fullyQualifiedTypeName name="br.com.economy.DAO.UsuarioDao"/>
+<fullyQualifiedTypeName name="br.com.economy.entities.Usuario"/>
 </qualifiedTypeNameHistroy>

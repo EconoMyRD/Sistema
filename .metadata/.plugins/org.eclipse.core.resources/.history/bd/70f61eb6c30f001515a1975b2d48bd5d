@@ -1,0 +1,36 @@
+
+
+var GetDadosFormulario = 
+{
+		init: function()
+		{
+			GetDadosFormulario.setForm();
+		},
+		
+		setForm: function()
+		{
+			var form = document.querySelector('form');
+			form.addEventListener('submit', function(event)
+			{
+				GetDadosFormulario.getDados(form);
+				event.preventDefault();
+			});
+		},
+		
+		getDados: function(form)
+		{
+			var
+				nome = form.nome.value,
+				email = form.email.value;
+			
+			
+		},
+		
+		saveDados: function()
+		{
+			
+		}
+};
+
+
+GetDadosFormulario.init();

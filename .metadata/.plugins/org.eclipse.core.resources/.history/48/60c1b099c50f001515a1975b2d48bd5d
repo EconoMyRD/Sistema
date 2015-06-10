@@ -1,0 +1,42 @@
+
+
+var GetDadosFormulario = 
+{
+		init: function()
+		{
+			GetDadosFormulario.setForm();
+		},
+		
+		setForm: function()
+		{
+			var form = document.querySelector('form');
+			form.addEventListener('submit', function(event)
+			{
+				GetDadosFormulario.getDados(form);
+				event.preventDefault();
+			});
+		},
+		
+		getDados: function(form)
+		{
+			var
+				cliente =
+				{
+					nome: form.nome.value,
+					email: form.email.value
+				};
+				
+			GetDadosFormulario.saveDados(cliente);
+		},
+		
+		saveDados: function(cliente)
+		{
+			var ajax = ajaxInit(),
+				url = 'localhost:8080/Economy/servletCliente?nome=' + cliente.nome + '&email=' + cliente.email;
+			ajax.open('GET',url, true);
+			ajax.send();
+		}
+};
+
+
+GetDadosFormulario.init();

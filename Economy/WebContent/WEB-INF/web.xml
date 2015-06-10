@@ -36,18 +36,28 @@
     <servlet-name>GetCategory</servlet-name>
     <url-pattern>/ServletCategory</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  <servlet-name>ServletDetailedGraphic</servlet-name>
+    <servlet-name>ServletDetailedGraphic</servlet-name>
     <servlet-class>br.com.economy.servlet.ServletDetailedGraphic</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletDetailedGraphic</servlet-name>
     <url-pattern>/ServletDetailedGraphic</url-pattern>
   </servlet-mapping>
-  
-  <error-page>
-    <error-code>404</error-code>
-    <location>/WebContent/html/404.html</location>
-  </error-page>
+  <servlet>
+    <servlet-name>ServletCliente</servlet-name>
+    <servlet-class>br.com.economy.servlet.ServletCliente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCliente</servlet-name>
+    <url-pattern>/servletCliente</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ServletEmail</servlet-name>
+    <servlet-class>br.com.economy.servlet.ServletEmail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEmail</servlet-name>
+    <url-pattern>/servletEmail</url-pattern>
+  </servlet-mapping>
 </web-app>

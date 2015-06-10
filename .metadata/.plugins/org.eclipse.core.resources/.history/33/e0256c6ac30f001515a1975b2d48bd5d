@@ -1,0 +1,22 @@
+
+
+var GetDadosFormulario = 
+{
+		init: function()
+		{
+			GetDadosFormulario.setForm();
+		},
+		
+		setForm: function()
+		{
+			var form = document.querySelector('form');
+			form.addEventListener('submit', function(event)
+			{
+				
+				event.preventDefault();
+			});
+		}
+};
+
+
+GetDadosFormulario.init();

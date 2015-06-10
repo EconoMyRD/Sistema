@@ -1,0 +1,13 @@
+
+
+var GetDadosFormulario = 
+{
+	
+		init: function()
+		{
+			
+		}
+};
+
+
+GetDadosFormulario.init();
