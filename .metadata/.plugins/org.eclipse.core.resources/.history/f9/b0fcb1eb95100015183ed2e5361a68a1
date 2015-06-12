@@ -10,8 +10,8 @@
     	
 </head>
 <body>
-   <header>
-           <h1>EconoMY</h1>
+   <!-- <header>
+           <h1>EconoMY Daniela</h1>
         <nav>
             <ul>
                 <li> <a href="relatorio.html">Relatorios</a></li>
@@ -19,7 +19,7 @@
                 <li><a href="#">Calendario de Contas</a></li>
             </ul>
         </nav>
-       </header>
+       </header> -->
     
     
     <form action="">

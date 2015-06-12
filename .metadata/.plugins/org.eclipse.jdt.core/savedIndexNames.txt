@@ -33,6 +33,7 @@ INDEX VERSION 1.126+C:\Users\note ricardo\Desktop\economy\Sistema\.metadata\.plu
 166707718.index
 1626354815.index
 2232296030.index
+3206025769.index
 899343354.index
 4108727661.index
 1498219845.index

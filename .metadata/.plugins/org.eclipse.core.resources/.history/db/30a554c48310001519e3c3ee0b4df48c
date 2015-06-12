@@ -52,7 +52,7 @@ doc.getElementById('submit').addEventListener('click',
             // formating date;
             formatDate = formatDate(date);
             
-            //alert(date + formatDate);
+            alert(date + formatDate);
             salvarBancoDados(description,value,selectedSub,formatDate);
            
 		}
