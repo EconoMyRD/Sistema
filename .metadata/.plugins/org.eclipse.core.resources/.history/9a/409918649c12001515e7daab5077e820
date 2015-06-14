@@ -33,7 +33,7 @@ public class ServletDetailedGraphic extends HttpServlet {
 		String subcategory = "";
 			
 		//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		//System.out.println(request.getParameter("dateStart"));
+		System.out.println(request.getParameter("dateStart"));
 		subcategory = request.getParameter("subcategory");
 		long ds =Long.parseLong(request.getParameter("dateStart"));
 		dateStart.setTime(ds);

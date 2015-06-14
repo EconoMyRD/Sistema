@@ -74,7 +74,7 @@ function drawDetailedChart(ajax,options) {
 	data.addColumn('string', 'date');
 	data.addColumn('number', 'valor');
 	for (var i = 0; i < json.length; i++) {
-		data.addRow([ formatDate(json[i].date), json[i].value ]);
+		data.addRow([ json[i].date, json[i].value ]);
 	};
 	
 	var chartDetailed = new google.visualization.ColumnChart(document.getElementById('chart_div'));

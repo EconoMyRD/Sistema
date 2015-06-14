@@ -94,20 +94,17 @@ EntityManager em = HibernateUtil.getEntityManager();
 		
 		for (int i =0 ;i< list.size(); i++) {
 			float value = Float.parseFloat(list.get(i)[0].toString());
-			String dateString= list.get(i)[1].toString();
-		//	Date date =  new Date();
-//			try{
-//				//date = sdf.format(list.get(i)[1].toString());
-//				date = sdf.parse(list.get(i)[1].toString());
-//				dateString  = date.toString();
-//				System.out.println(list.get(i)[1].toString());
-//				System.out.println("date " + date + "   datString " + dateString );
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//			}
+			String dateString="";
+				//date = sdf.format(list.get(i)[1].toString());
+				Date date = sdf.parse(list.get(i)[1].toString());
+				System.out.println(list.get(i)[1].toString());
+				System.out.println(date );
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 
 			
-			ModelDetailedGraphic model = new ModelDetailedGraphic(dateString, value) ;
+			ModelDetailedGraphic model = new ModelDetailedGraphic(date, value) ;
 			modelList.add(model);
 		};		
 		

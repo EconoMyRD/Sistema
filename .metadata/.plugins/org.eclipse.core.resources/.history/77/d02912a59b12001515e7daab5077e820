@@ -33,17 +33,17 @@ public class ServletDetailedGraphic extends HttpServlet {
 		String subcategory = "";
 			
 		//SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		//System.out.println(request.getParameter("dateStart"));
+		System.out.println(request.getParameter("dateStart"));
 		subcategory = request.getParameter("subcategory");
 		long ds =Long.parseLong(request.getParameter("dateStart"));
 		dateStart.setTime(ds);
 		long de = Long.parseLong(request.getParameter("dateEnd"));
 		dateEnd.setTime(de);
 		
-//		System.out.println(request.getParameter("dateStart"));
-//		System.out.println(ds);
-//		System.out.println(dateStart);
-//		System.out.println(dateEnd);
+		System.out.println(request.getParameter("dateStart"));
+		System.out.println(ds);
+		System.out.println(dateStart);
+		System.out.println(dateEnd);
 		String json = DAO.getDataForDetailedGraphic(dateStart, dateEnd, subcategory);
 		out.write(json);
 	}
