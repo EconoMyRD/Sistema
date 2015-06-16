@@ -104,3 +104,6 @@
 127.0.0.1 - - [14/Jun/2015:13:37:54 -0300] "GET /Economy/ServletDetailedGraphic?dateStart=1433635200000&dateEnd=1434844800000&subcategory=onibus HTTP/1.1" 200 37
 127.0.0.1 - - [14/Jun/2015:13:37:58 -0300] "GET /Economy/ServletRelatory?dateStart=07/06/2015&dateEnd=21/06/2015&category=2 HTTP/1.1" 200 120
 127.0.0.1 - - [14/Jun/2015:13:37:59 -0300] "GET /Economy/ServletDetailedGraphic?dateStart=1433635200000&dateEnd=1434844800000&subcategory=taxi HTTP/1.1" 200 71
+127.0.0.1 - - [14/Jun/2015:14:54:33 -0300] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [14/Jun/2015:15:01:50 -0300] "GET /Economy/ServletCategory HTTP/1.1" 200 215
+127.0.0.1 - - [14/Jun/2015:15:01:50 -0300] "GET /Economy/ServletCategory HTTP/1.1" 200 215

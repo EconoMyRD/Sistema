@@ -60,4 +60,13 @@
     <servlet-name>ServletEmail</servlet-name>
     <url-pattern>/servletEmail</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ServletActivateUser</servlet-name>
+    <servlet-class>br.com.economy.servlet.ServletActivateUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActivateUser</servlet-name>
+    <url-pattern>/servletActivateUser</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,0 +1,11 @@
+
+public class Runner {
+
+	public static void main(String[] args) 
+	{
+		Main m = new Main();
+
+		m.sendMail("danielamaradms@gmail.com","ricardo.jonas.faria@gmail.com","Testes Email - Java","Teste realizado com sucesso!"); 
+
+	}
+}

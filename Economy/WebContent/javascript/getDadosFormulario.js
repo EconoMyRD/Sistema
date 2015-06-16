@@ -13,9 +13,26 @@ var GetDadosFormulario =
 			form.addEventListener('submit', function(event)
 			{
 				GetDadosFormulario.getDados(form);
+				GetDadosFormulario.sendEmail(form);
 				event.preventDefault();
 			});
 		},
+		
+		sendEmail: function(form) {
+			var	cliente =
+			{
+				nome: form.nome.value,
+				email: form.email.value,
+				senha: form.senha.value
+			};
+			var ajax = ajaxInit();
+			var  url = 'http://localhost:8080/Economy/servletEmail?name=' + cliente.nome + 
+				'&email=' + cliente.email + '&password=' + cliente.senha;
+			ajax.open('GET', url, true);
+			ajax.send();
+			
+		},
+		
 		
 		getDados: function(form)
 		{
@@ -33,7 +50,7 @@ var GetDadosFormulario =
 		saveDados: function(cliente)
 		{
 			var ajax = ajaxInit(),
-				url = 'localhost:8080/Economy/servletCliente?nome=' + cliente.nome + '&email=' + cliente.email + '&senha=' + cliente.senha;
+				url = 'http://localhost:8080/Economy/servletCliente?nome=' + cliente.nome + '&email=' + cliente.email + '&senha=' + cliente.senha;
 			ajax.open('GET',url, true);
 			ajax.send();
 			

@@ -2,6 +2,7 @@ package br.com.economy.DAO;
 
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.com.economy.entities.Usuario;
 import br.com.economy.util.HibernateUtil;
@@ -35,6 +36,16 @@ EntityManager em = HibernateUtil.getEntityManager();
 	{
 		Usuario usuario = em.find(Usuario.class, idUsuario);
 		return usuario;
+	}
+	
+	
+	public void activateUser(String email){
+		Query query = em.createNativeQuery("update usuario set ativo = true where email = ?");
+		query.setParameter(1, email);
+		
+		em.getTransaction().begin();
+		query.executeUpdate();
+		em.getTransaction().commit();
 	}
 
 }

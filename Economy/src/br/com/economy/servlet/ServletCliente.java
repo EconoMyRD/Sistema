@@ -16,17 +16,12 @@ public class ServletCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     UsuarioDao dao = new UsuarioDao();
     
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public ServletCliente() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String nome = request.getParameter("nome");

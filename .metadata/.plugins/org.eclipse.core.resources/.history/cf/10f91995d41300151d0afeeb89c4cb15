@@ -1,0 +1,62 @@
+
+
+var GetDadosFormulario = 
+{
+		init: function()
+		{
+			GetDadosFormulario.setForm();
+		},
+		
+		setForm: function()
+		{
+			var form = document.querySelector('form');
+			form.addEventListener('submit', function(event)
+			{
+				GetDadosFormulario.getDados(form);
+				GetDadosFormulario.sendEmail(form);
+				event.preventDefault();
+			});
+		},
+		
+		sendEmail: function() {
+			var	cliente =
+			{
+				nome: form.nome.value,
+				email: form.email.value,
+				senha: form.senha.value
+			};
+			var ajax = ajaxInit();
+			var  url = 'localhost:8080/Economy/servletEmail?name=' + cliente.nome + 
+				'&email=' + cliente.email + '&password=' + cliente.senha;
+			ajax.open('GET', url, true);
+			ajax.send();
+			
+		},
+		
+		
+		getDados: function(form)
+		{
+			var
+				cliente =
+				{
+					nome: form.nome.value,
+					email: form.email.value,
+					senha: form.senha.value
+				};
+				
+			GetDadosFormulario.saveDados(cliente);
+		},
+		
+		saveDados: function(cliente)
+		{
+			var ajax = ajaxInit(),
+				url = 'localhost:8080/Economy/servletCliente?nome=' + cliente.nome + '&email=' + cliente.email + '&senha=' + cliente.senha;
+			ajax.open('GET',url, true);
+			ajax.send();
+			
+			
+		}
+};
+
+
+GetDadosFormulario.init();
