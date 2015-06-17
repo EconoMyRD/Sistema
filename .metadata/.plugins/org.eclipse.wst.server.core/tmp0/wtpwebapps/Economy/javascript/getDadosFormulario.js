@@ -50,11 +50,9 @@ var GetDadosFormulario =
 		saveDados: function(cliente)
 		{
 			var ajax = ajaxInit(),
-				url = 'http://localhost:8080/Economy/servletCliente?nome=' + cliente.nome + '&email=' + cliente.email + '&senha=' + cliente.senha;
+				url = 'http://localhost:8080/Economy/servletCliente?nome=' + cliente.nome + '&email=' + cliente.email +                             '&senha=' + cliente.senha;
 			ajax.open('GET',url, true);
-			ajax.send();
-			
-			
+			ajax.send();			
 		}
 };
 
