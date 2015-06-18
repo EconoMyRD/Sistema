@@ -13,6 +13,7 @@ $(document).ready(function()
     $("#header").load("header.html");  
     $("#footer").load("footer.html");
     $("#lancamentos").load("lancamento.html");
+    $("#content").load("headerGerencial.html");
 }); 
 
 

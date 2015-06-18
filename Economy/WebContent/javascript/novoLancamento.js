@@ -92,7 +92,6 @@ var novoLancamento = {
     
     
     showHTML: function(html, field){
-    	alert(html);
         field.innerHTML = html;
     },
   
