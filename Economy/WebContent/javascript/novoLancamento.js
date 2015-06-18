@@ -36,9 +36,10 @@ var novoLancamento = {
         ajax.onreadystatechange = function(){
             if (ajax.readyState==4 && ajax.status==200)
             {
-                var json = ajax.responseText;
+                var json = ajax.responseText;            
                 var field = document.getElementById('subcategory');
-                novoLancamento.showOptionsSubcategory(json, field);
+                var html = novoLancamento.getHTML(json);
+                novoLancamento.showHTML(html, field);
             }
             
         };
@@ -76,36 +77,26 @@ var novoLancamento = {
         }
     },
 
-
-    
-    
-    showOptions: function(json, field){
-        var options = JSON.parse(json);
+    getHTML: function(json){
+    	var options = JSON.parse(json);
         var html= "";
 
         for (var i in options) {
             html+= '<option value = "';
             html+= options[i].id + '">';
             html+= options[i].nome;
-            html += '</option>';   				    				
-        }    		
+            html += '</option>';  
+        }
+        return html;
+    },
+    
+    
+    showHTML: function(html, field){
+    	alert(html);
         field.innerHTML = html;
-        novoLancamento.changeSubcategory();
     },
   
-	showOptionsSubcategory: function(json, field){
-	    var options = JSON.parse(json);
-	    var html= "";
 	
-	    for (var i in options) {
-	        html+= '<option value = "';
-	        html+= options[i].id + '">';
-	        html+= options[i].nome;
-	        html += '</option>';   				    				
-	    }    		
-	    field.innerHTML = html;
-	    
-	},
 	
 	getCategories: function(){
 	    var ajax = ajaxInit();
@@ -115,9 +106,11 @@ var novoLancamento = {
 	
 	    ajax.onreadystatechange = function(){	    	
 	        if (ajax.readyState==4 && ajax.status==200){
-	            var json = ajax.responseText;
+	            var json = ajax.responseText;	            
 	            var field = document.getElementById('category');
-	            novoLancamento.showOptions(json,field);
+	            var html = novoLancamento.getHTML(json);
+	            novoLancamento.showHTML(html, field);
+	            novoLancamento.changeSubcategory();
 	        }
 		
 	   };
