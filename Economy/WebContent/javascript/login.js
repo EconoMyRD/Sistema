@@ -22,6 +22,7 @@ $(document).ready(function()
     $('.menu-interno').click(function() 
     {
         $("#conteudo").load($(this).attr('href'));
+        $("#conteudoInicial").hide();
         return false;
     });    
 });
