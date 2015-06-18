@@ -2,17 +2,19 @@ var Relatorio = {
 
     init: function(){
         document.getElementById('submit').addEventListener('click', Relatorio.getRelatory);
-        document.getElementById('category').addEventListener('load', GetOptions.getAllCategories());
+        document.getElementById('category').addEventListener('load', Relatorio.getCategories());
         
     },
     
    
     getRelatory: function(event) {
         event.preventDefault();
-        var dateS = document.getElementById('dateStart').value;
-        var dateE = document.getElementById('dateEnd').value;
+        var dateS = new Date();
+        var dateE = new Date();
+        dateS = document.getElementById('dateStart').value;
+        dateE = document.getElementById('dateEnd').value;
         var category = document.getElementById('category').value;
-
+        
         var dateStart = Relatorio.formatDate(dateS);
         var dateEnd =  Relatorio.formatDate(dateE);
 
@@ -26,6 +28,7 @@ var Relatorio = {
 
         return result;
     },
+    
     
     showOptions: function(json, field){
         var options = JSON.parse(json);
@@ -41,7 +44,7 @@ var Relatorio = {
         
     },
         
-	getAllCategories: function(){
+	getCategories: function(){
 	    var ajax = ajaxInit();
 	    var url = 'http://localhost:8080/Economy/ServletCategory';
 	    ajax.open('GET', url, true);
@@ -51,11 +54,25 @@ var Relatorio = {
 	        if (ajax.readyState==4 && ajax.status==200){
 	            var json = ajax.responseText;
 	            var field = document.getElementById('category');
-	            GetOptions.showOptions(json,field);
+	            Relatorio.showOptions(json,field);
 	        }
 	    };
 	    
-	}
+	},
+	
+	showOptions: function(json, field){
+        var options = JSON.parse(json);
+        var html= "";
+
+        for (var i in options) {
+            html+= '<option value = "';
+            html+= options[i].id + '">';
+            html+= options[i].nome;
+            html += '</option>';   				    				
+        }    		
+        field.innerHTML = html;
+    }
+   
 };
 
 Relatorio.init();
