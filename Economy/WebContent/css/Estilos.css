@@ -243,7 +243,7 @@ h5
     border: none;
     border-radius: 5px;
 }
-input
+input,  select
 {
     width: 100%;
     height: 2.8em;
@@ -267,15 +267,10 @@ input:first-child
 input[type=date], select
 {
     width: 25%;
-    height: 2.8em;
-    border: 1px solid #eee;
-    margin-top: 0px;
-    padding: auto 5px;
-    margin-right:5px;
-    border-radius:5px;
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
-    margin-bottom:15px;
+}
+ .field
+{
+    width: 100%;
 }
 /* #formRelatorio
 {
