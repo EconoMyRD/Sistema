@@ -17,11 +17,9 @@ EntityManager em = HibernateUtil.getEntityManager();
 //////////     VERIFY IF THE USER IS ACTIVE ON DATABASE  //////////////
 	public int verifyUser(String email, String password){		
 
-		Query q = em.createNativeQuery("select * from usuario u where u.email = ?", Usuario.class);
-		q.setParameter(1, email);
 		Usuario user =  new  Usuario();
 		try{
-			user= (Usuario)q.getSingleResult();		
+			user= getUserByEmail(email);	
 			if(user.getAtivo() == false){
 				return 1;				//user not active
 			}		
@@ -40,13 +38,25 @@ EntityManager em = HibernateUtil.getEntityManager();
 		
 	}
 	
+	
+	public  Usuario getUserByEmail(String email) throws NoResultException{
+		Query q = em.createNativeQuery("select * from usuario u where u.email = ?", Usuario.class);
+		q.setParameter(1, email);
+		
+		Usuario user =  new  Usuario();
+		
+		user= (Usuario)q.getSingleResult();
+		return user;
+	}
+	
+	
+	
 	////////	VERIFY IF THE EMAIL IS ALREADY REGISTERED 	///////
 	public int verifyEmail(String email){
-		Query query = em.createNativeQuery("select * from usuario where email = ?");
-		query.setParameter(1, email);
-		
+		Usuario user = new Usuario();
 		try{
-			query.getSingleResult();
+			user = getUserByEmail(email);
+			
 			return 1;					// email already registered
 		}
 		catch(NoResultException e){

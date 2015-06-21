@@ -14555,3 +14555,39 @@ Binding(ALT+SHIFT+ARROW_LEFT,
 
 !ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-06-21 12:00:56.181
 !MESSAGE Several ports (8005, 8080, 8009) required by Tomcat v7.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or change the port number(s).
+
+!ENTRY org.eclipse.wst.jsdt.ui 2 0 2015-06-21 14:22:49.134
+!MESSAGE The 'org.eclipse.wst.jsdt.ui.JavaNoTypeCompletionProposalComputer' proposal computer from the 'org.eclipse.wst.jsdt.ui' plug-in did not complete normally. The extension took too long to return from the 'computeCompletionProposals()' operation.
+
+!ENTRY org.eclipse.wst.jsdt.ui 2 0 2015-06-21 14:23:44.109
+!MESSAGE The 'org.eclipse.wst.jsdt.ui.JavaNoTypeCompletionProposalComputer' proposal computer from the 'org.eclipse.wst.jsdt.ui' plug-in did not complete normally. The extension took too long to return from the 'computeCompletionProposals()' operation.
+
+!ENTRY org.eclipse.wst.sse.ui 4 4 2015-06-21 15:12:43.381
+!MESSAGE 1 >= 1
+!STACK 0
+java.lang.ArrayIndexOutOfBoundsException: 1 >= 1
+	at java.util.Vector.elementAt(Unknown Source)
+	at org.eclipse.wst.xml.core.internal.document.StructuredDocumentRegionContainer.getText(StructuredDocumentRegionContainer.java:244)
+	at org.eclipse.wst.xml.core.internal.document.NodeImpl.getSource(NodeImpl.java:437)
+	at org.eclipse.wst.xml.core.internal.document.TextImpl.getSource(TextImpl.java:345)
+	at org.eclipse.wst.html.core.internal.validate.SyntaxValidator.validateTextSource(SyntaxValidator.java:408)
+	at org.eclipse.wst.html.core.internal.validate.SyntaxValidator.validateChildren(SyntaxValidator.java:377)
+	at org.eclipse.wst.html.core.internal.validate.SyntaxValidator.validate(SyntaxValidator.java:91)
+	at org.eclipse.wst.html.core.internal.validate.CompositeValidator.validate(CompositeValidator.java:54)
+	at org.eclipse.wst.xml.core.internal.validate.AbstractPropagatingValidator.validate(AbstractPropagatingValidator.java:38)
+	at org.eclipse.wst.xml.core.internal.validate.AbstractPropagatingValidator.propagateToChildElements(AbstractPropagatingValidator.java:60)
+	at org.eclipse.wst.xml.core.internal.validate.AbstractPropagatingValidator.validate(AbstractPropagatingValidator.java:40)
+	at org.eclipse.wst.xml.core.internal.validate.AbstractPropagatingValidator.propagateToChildElements(AbstractPropagatingValidator.java:60)
+	at org.eclipse.wst.xml.core.internal.validate.AbstractPropagatingValidator.validate(AbstractPropagatingValidator.java:40)
+	at org.eclipse.wst.html.core.internal.validate.DocumentPropagatingValidator.validate(DocumentPropagatingValidator.java:32)
+	at org.eclipse.wst.html.core.internal.validation.HTMLValidator.validate(HTMLValidator.java:275)
+	at org.eclipse.wst.html.core.internal.validation.HTMLValidator.validateFile(HTMLValidator.java:348)
+	at org.eclipse.wst.html.core.internal.validation.HTMLValidator.validateDelta(HTMLValidator.java:320)
+	at org.eclipse.wst.html.core.internal.validation.HTMLValidator.validate(HTMLValidator.java:233)
+	at org.eclipse.wst.sse.ui.internal.reconcile.validator.ReconcileStepForValidator.validate(ReconcileStepForValidator.java:303)
+	at org.eclipse.wst.sse.ui.internal.reconcile.validator.ReconcileStepForValidator.reconcileModel(ReconcileStepForValidator.java:262)
+	at org.eclipse.jface.text.reconciler.AbstractReconcileStep.reconcile(AbstractReconcileStep.java:95)
+	at org.eclipse.wst.sse.ui.internal.reconcile.validator.ValidatorStrategy.reconcile(ValidatorStrategy.java:269)
+	at org.eclipse.wst.sse.ui.internal.reconcile.DocumentRegionProcessor.process(DocumentRegionProcessor.java:321)
+	at org.eclipse.wst.sse.ui.internal.reconcile.StructuredRegionProcessor.process(StructuredRegionProcessor.java:258)
+	at org.eclipse.wst.sse.ui.internal.reconcile.DirtyRegionProcessor$BackgroundThread.run(DirtyRegionProcessor.java:691)

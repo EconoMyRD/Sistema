@@ -1,0 +1,10 @@
+package br.com.economy.session;
+
+public class Session {
+
+	public static void initSession(String email) {
+		
+		
+	}
+
+}

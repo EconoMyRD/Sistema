@@ -7,8 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.economy.DAO.UsuarioDao;
+import br.com.economy.entities.Usuario;
 
 
 public class ServletLogin extends HttpServlet {
@@ -29,9 +31,21 @@ public class ServletLogin extends HttpServlet {
 		Integer active = DAO.verifyUser(email, password);
 		
 		System.out.println(active);
+		if(active == 3){
+			initSession(request, email);
+		}
 		PrintWriter out = response.getWriter();
 		out.write(active.toString());
 		
+	}
+	
+	public void initSession(HttpServletRequest request, String email){
+		UsuarioDao dao = new UsuarioDao();
+		Usuario user = new Usuario();
+		user = dao.getUserByEmail(email);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);				
 	}
 
 }

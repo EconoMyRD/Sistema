@@ -18,6 +18,7 @@ $(document).ready(function()
 
 
 /*Carregar páginas com o clique*/
+/*
 $(document).ready(function() 
 {
     $('.menu-interno').click(function() 
@@ -28,5 +29,5 @@ $(document).ready(function()
     });    
 });
 
-
+*/
 

@@ -48,7 +48,7 @@ var loginSystem = {
 			message.innerHTML = 'Senha incorreta';
 		}
 		else{
-			message.innerHTML = 'Usuario ok';
+			window.location.href= 'http://localhost:8080/Economy/html/indexGerencial.html';
 		}
 	}
 	
