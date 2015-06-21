@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +22,8 @@ public class ServletTransaction extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException 
+	{
 
 		System.out.println("estou no doget");
 
@@ -33,36 +35,48 @@ public class ServletTransaction extends HttpServlet {
 		Date date_transaction = new Date();
 		float value;
 		int subcategory;
-		int user = 1;
-		
-		System.out.println("date_transactionString" + date_transactionString);
-		try {
-			// conversions
-			
-			value = Float.parseFloat(valueString);
-			subcategory = Integer.parseInt(request.getParameter("subcategory"));
 
-//			out.println(description + " " + value + " "
-//					+ date_transactionString);
-			// conversion for date
+		Cookie cookie[] = request.getCookies();
+		if (cookie != null)
+		{
+			int user = Integer.parseInt(cookie[0].getValue());	
+			//int user = 1;
 
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");			
-			date_transaction = sdf.parse(date_transactionString);
-			System.out.println("date_transacrion" + date_transaction);
-			System.out.println("date_register" + date_register);
-			System.out.println(subcategory);
-			
-			persistOnDataBase(value,date_transaction, date_register, description,subcategory,user);
+			System.out.println("date_transactionString" + date_transactionString);
+			try 
+			{
+				// conversions
 
-		} catch (ParseException e) {
-			e.printStackTrace();
+				value = Float.parseFloat(valueString);
+				subcategory = Integer.parseInt(request.getParameter("subcategory"));
+
+				//			out.println(description + " " + value + " "
+				//					+ date_transactionString);
+				// conversion for date
+
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");			
+				date_transaction = sdf.parse(date_transactionString);
+				System.out.println("date_transacrion" + date_transaction);
+				System.out.println("date_register" + date_register);
+				System.out.println(subcategory);
+
+				persistOnDataBase(value,date_transaction, date_register, description,subcategory,user);
+
+			} 
+			catch (ParseException e) 
+			{
+				e.printStackTrace();
+			}
 		}
-
+		else
+		{
+			response.sendRedirect("../WebContent/html/index.html");
+		}
 	}
 
 	private void persistOnDataBase(float value,Date date_transaction,Date date_register,
 			String description, int subcategory,int user) {
-		
+
 		// set the object transaction
 		Transacao transaction = new Transacao();
 		transaction.setValor(value);
