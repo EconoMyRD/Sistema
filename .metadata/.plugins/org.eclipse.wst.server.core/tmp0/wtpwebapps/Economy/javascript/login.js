@@ -13,6 +13,7 @@ $(document).ready(function()
     $("#header").load("header.html");  
     $("#footer").load("footer.html");
     $("#lancamentos").load("lancamento.html");
+    $("#headerGerencial").load("headerGerencial.html");
 }); 
 
 
@@ -22,6 +23,7 @@ $(document).ready(function()
     $('.menu-interno').click(function() 
     {
         $("#conteudo").load($(this).attr('href'));
+        $("#conteudoInicial").hide();
         return false;
     });    
 });

@@ -5,8 +5,8 @@ var novoLancamento = {
     },
     
     setForm: function(){
-        document.getElementById('category').addEventListener('change',novoLancamento.changeSubcategory);
         document.getElementById('category').addEventListener('load',novoLancamento.getCategories());
+        document.getElementById('category').addEventListener('change',novoLancamento.changeSubcategory);
         document.getElementById('submit').addEventListener('click', novoLancamento.getValues);
     },
 
@@ -36,9 +36,10 @@ var novoLancamento = {
         ajax.onreadystatechange = function(){
             if (ajax.readyState==4 && ajax.status==200)
             {
-                var json = ajax.responseText;
+                var json = ajax.responseText;            
                 var field = document.getElementById('subcategory');
-                GetOptions.showOptionsSubcategory(json, field);
+                var html = novoLancamento.getHTML(json);
+                novoLancamento.showHTML(html, field);
             }
             
         };
@@ -76,11 +77,46 @@ var novoLancamento = {
         }
     },
 
+    getHTML: function(json){
+    	var options = JSON.parse(json);
+        var html= "";
 
-    getCategories: function(){
-        GetOptions.getAllCategories();
-        //novoLancamento.changeSubcategory();
-    }
+        for (var i in options) {
+            html+= '<option value = "';
+            html+= options[i].id + '">';
+            html+= options[i].nome;
+            html += '</option>';  
+        }
+        return html;
+    },
+    
+    
+    showHTML: function(html, field){
+        field.innerHTML = html;
+    },
+  
+	
+	
+	getCategories: function(){
+	    var ajax = ajaxInit();
+	    var url = 'http://localhost:8080/Economy/ServletCategory';
+	    ajax.open('GET', url, true);
+	    ajax.send();
+	
+	    ajax.onreadystatechange = function(){	    	
+	        if (ajax.readyState==4 && ajax.status==200){
+	            var json = ajax.responseText;	            
+	            var field = document.getElementById('category');
+	            var html = novoLancamento.getHTML(json);
+	            novoLancamento.showHTML(html, field);
+	            novoLancamento.changeSubcategory();
+	        }
+		
+	   };
+    
+	}
+    
+    
 
 
 };

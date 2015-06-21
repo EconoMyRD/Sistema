@@ -46,24 +46,22 @@ var MakeGraphic = {
 
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 
-        google.visualization.events.addListener(chart, 'select', MakeGraphic.listener(chart,data));
-    
+        google.visualization.events.addListener(chart, 'select', function(){
+    		var selectedItem = chart.getSelection()[0];
+    		var selected = data.getValue(selectedItem.row, 0);
+    		
+    		var dateS = document.getElementById('dateStart').value;
+    		var dateE = document.getElementById('dateEnd').value;
+    		
+    		var ds = new Date(dateS);
+    		var de = new Date(dateE);
+    		var dateStart = ds.getTime();
+    		var dateEnd = de.getTime();
+    		MakeGraphic.getDataForDetailedGraphic(dateStart, dateEnd, selected);
+        });       	
         chart.draw(data, options);
     },
 
-    listener: function(chart,data){
-        var selectedItem = chart.getSelection()[0];
-        var selected = data.getValue(selectedItem.row, 0);
-
-        var dateS = document.getElementById('dateStart').value;
-        var dateE = document.getElementById('dateEnd').value;
-
-        var ds = new Date(dateS);
-        var de = new Date(dateE);
-        var dateStart = ds.getTime();
-        var dateEnd = de.getTime();
-        MakeGraphic.getDataForDetailedGraphic(dateStart, dateEnd, selected);
-    },
 
     drawDetailedChart: function(ajax,options) {
         var jsonString = ajax.responseText;
@@ -73,7 +71,7 @@ var MakeGraphic = {
         data.addColumn('string', 'date');
         data.addColumn('number', 'valor');
         for (var i = 0; i < json.length; i++) {
-            data.addRow([ formatDate(json[i].date), json[i].value ]);
+            data.addRow([ MakeGraphic.formatDate(json[i].date), json[i].value ]);
         };
 
         var chartDetailed = new google.visualization.ColumnChart(document.getElementById('chart_div'));
@@ -93,9 +91,7 @@ var MakeGraphic = {
         ajax.onreadystatechange = function() {
             if (ajax.readyState == 4 && ajax.status == 200) {
                 var options = MakeGraphic.getDetailedOptions(subcategory);
-                
-               //verificar esta linha tira ou deixa
-                //google.setOnLoadCallback(drawChart(ajax, options));
+ 
                 MakeGraphic.drawDetailedChart(ajax,options);
             }
         };

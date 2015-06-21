@@ -1,6 +1,7 @@
 package br.com.economy.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.persistence.Query;
 import javax.servlet.ServletException;
@@ -24,16 +25,25 @@ public class ServletCliente extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		PrintWriter out = response.getWriter();
+		
 		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		
-		Usuario usuario = new Usuario();
-		usuario.setNome(nome);
-		usuario.setEmail(email);
-		usuario.setSenha(senha);
-		usuario.setAtivo(false);
-		
-		dao.Insert(usuario);
+		int confirm = dao.verifyEmail(email);
+		if(confirm == 0){
+			Usuario usuario = new Usuario();
+			usuario.setNome(nome);
+			usuario.setEmail(email);
+			usuario.setSenha(senha);
+			usuario.setAtivo(false);
+			
+			dao.Insert(usuario);
+			out.write("1");						//it can save the user on database
+		}
+		else{
+			out.write("0");						// it cann't save
+		}
 	}
 }

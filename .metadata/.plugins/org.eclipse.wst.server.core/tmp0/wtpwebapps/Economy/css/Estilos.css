@@ -207,7 +207,11 @@ h5
     display: block;
     color: white;   
 }
-#logar
+.menu-secundario p
+{
+    font-size: 0.9em;  
+}
+#logar, #cadastrar, #exit
 {
     float: right;
     background: #fff;
@@ -222,6 +226,10 @@ h5
     padding: 0.5em;
     cursor: pointer;
 }
+#cadastrar a
+{
+   color: #6AC4AF; 
+}
 #div-logar
 {
     width: 290px;
@@ -235,7 +243,7 @@ h5
     border: none;
     border-radius: 5px;
 }
-input, select
+input,  select
 {
     width: 100%;
     height: 2.8em;
@@ -256,6 +264,18 @@ input:first-child
 {
     height: 70px;
 }
+input[type=date], select
+{
+    width: 25%;
+}
+ .field
+{
+    width: 100%;
+}
+/* #formRelatorio
+{
+    width: 50%;
+} */
 .botao
 {
 	background:#5CCD00;
@@ -275,6 +295,27 @@ input:first-child
 	-webkit-border-radius:5px;
 	border:1px solid #459A00;
 	cursor:pointer;
+}
+.botaoRelatorio
+{
+	background:#5CCD00;
+	background:-moz-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
+	background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#5CCD00),color-stop(100%,#4AA400));
+	background:-webkit-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
+	background:-o-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
+	background:-ms-linear-gradient(top,#5CCD00 0%,#4AA400 100%);
+	background:linear-gradient(top,#5CCD00 0%,#4AA400 100%);
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#5CCD00', endColorstr='#4AA400',GradientType=0);
+	padding:10px 15px;
+	width:20%;
+	color:#fff;
+	font-size:16px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border:1px solid #459A00;
+	cursor:pointer;
+    margin: 0 auto;
 }
 /*********************************************INTERNAS****************************************************/
 .coluna-meio

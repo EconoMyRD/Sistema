@@ -2,30 +2,19 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/Estilos.css" >
     <title>Relatórios | Economy</title>
-    <link rel="stylesheet" href="/Economy/css/relatorioStyle.css">
-    
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">google.load('visualization', '1.0', {'packages':['corechart']});</script> 	
-    	
+    <script type="text/javascript">google.load('visualization', '1.0', {'packages':['corechart']});</script> 
 </head>
 <body>
-   <header>
-           <h1>EconoMY</h1>
-        <nav>
-            <ul>
-                <li> <a href="relatorio.html">Relatorios</a></li>
-                <li><a href="novoLancamento.html">Nova Lançamento</a></li>
-                <li><a href="#">Calendario de Contas</a></li>
-            </ul>
-        </nav>
-       </header>
+   
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, ab eos suscipit expedita quas quis officia fugit reprehenderit,         blanditiis commodi similique dolore vitae fuga quasi, officiis ipsa error aperiam. Non.</p>
     
-    
-    <form action="">
+    <form id="formRelatorio">
         <fieldset>
             <legend>Relatórios</legend>
-            <label for="">Período
+            <label for="">Período: 
                 <input type="date" id="dateStart">
                 a
                 <input type="date" id="dateEnd">
@@ -34,24 +23,23 @@
             <label for="">
                 Catedoria:
                 <select name="category" id="category">
-                
+                    
                 </select>
             </label>
             
-            <input type="submit" id="submit">
+            <input type="submit" id="submit" value="Analisar" class="botaoRelatorio">
         </fieldset>
     </form>
     
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, ab eos suscipit expedita quas quis officia fugit reprehenderit,         blanditiis commodi similique dolore vitae fuga quasi, officiis ipsa error aperiam. Non.</p>
-
 	<div id="chart_div">
-		
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</div>
 	
-	
-	 <script type="text/javascript"src = "/Economy/javascript/ajaxInit.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/Economy/javascript/login.js"></script>
+	<script type="text/javascript"src = "/Economy/javascript/ajaxInit.js"></script>
 	<script type="text/javascript"src = "/Economy/javascript/relatorio.js"></script>
-	<script type="text/javascript" src = "/Economy/javascript/makeGraphic.js"></script> 
-	
+	<script type="text/javascript" src = "/Economy/javascript/makeGraphic.js"></script>
 </body>
 </html>

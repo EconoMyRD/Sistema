@@ -12,11 +12,19 @@ var GetDadosFormulario =
 			var form = document.querySelector('form');
 			form.addEventListener('submit', function(event)
 			{
-				GetDadosFormulario.getDados(form);
-				GetDadosFormulario.sendEmail(form);
+				var cliente = GetDadosFormulario.getDados(form);
+				GetDadosFormulario.saveDados(cliente, form);
+				
 				event.preventDefault();
 			});
 		},
+		
+		
+		showMessage: function() {
+			var message = document.getElementById("message");
+			message.innerHTML = 'Este email já foi utilizado em outra conta!';
+		},
+		
 		
 		sendEmail: function(form) {
 			var	cliente =
@@ -44,15 +52,29 @@ var GetDadosFormulario =
 					senha: form.senha.value
 				};
 				
-			GetDadosFormulario.saveDados(cliente);
+			return cliente;
+			
 		},
 		
-		saveDados: function(cliente)
+		saveDados: function(cliente,form)
 		{
 			var ajax = ajaxInit(),
-				url = 'http://localhost:8080/Economy/servletCliente?nome=' + cliente.nome + '&email=' + cliente.email +                             '&senha=' + cliente.senha;
+				url = 'http://localhost:8080/Economy/servletCliente?nome=' + cliente.nome + 
+					'&email=' + cliente.email +'&senha=' + cliente.senha;
 			ajax.open('GET',url, true);
-			ajax.send();			
+			ajax.send();
+			ajax.onreadystatechange= function() {
+				if(ajax.readyState == 4 && ajax.status == 200){
+					var confirm = ajax.responseText;
+					if(confirm == '1'){
+						GetDadosFormulario.sendEmail(form);					
+					}
+					else{
+						GetDadosFormulario.showMessage();
+					}
+				}
+				
+			};
 		}
 };
 
