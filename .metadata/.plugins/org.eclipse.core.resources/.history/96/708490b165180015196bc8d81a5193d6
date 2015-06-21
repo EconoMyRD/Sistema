@@ -27,8 +27,8 @@ public class Email {
      */  
     public Email() {
     	//Para o GMAIL   
-        mailSMTPServer = "mx1.hostinger.com.br";  
-        mailSMTPServerPort = "2525";//RICARDOOOOO!!!!! Senao der certo com essa porta, por favor tente 110. Obrigada :D
+        mailSMTPServer = "smtp.gmail.com";  
+        mailSMTPServerPort = "465";  
     }  
     /* 
      * caso queira mudar o servidor e a porta, so enviar para o contrutor 
@@ -99,7 +99,7 @@ public class Email {
              *  2 - seu nome de usuario do gmail 
              *  3 - sua senha do gmail 
              */  
-            tr.connect(mailSMTPServer, "suporte@economy.zz.mu","economysuporte");  
+            tr.connect(mailSMTPServer, "danielamaradms@gmail.com", "silvamaradaniela2804");  
             msg.saveChanges(); // don't forget this  
             //envio da mensagem  
             tr.sendMessage(msg, msg.getAllRecipients());  

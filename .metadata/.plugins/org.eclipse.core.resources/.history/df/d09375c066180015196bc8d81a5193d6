@@ -28,7 +28,7 @@ public class Email {
     public Email() {
     	//Para o GMAIL   
         mailSMTPServer = "mx1.hostinger.com.br";  
-        mailSMTPServerPort = "2525";//RICARDOOOOO!!!!! Senao der certo com essa porta, por favor tente 110. Obrigada :D
+        mailSMTPServerPort = "2525";//RICARDOOOOO!!!!! Senao der certo com essa porta, por favor tente 110
     }  
     /* 
      * caso queira mudar o servidor e a porta, so enviar para o contrutor 
