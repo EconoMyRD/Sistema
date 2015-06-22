@@ -24,6 +24,7 @@ public class Usuario implements Serializable
 	private String email;
 	private String senha;
 	private Boolean ativo;
+	private float saldo;
 	
 	public Usuario() 
 	{
@@ -69,5 +70,14 @@ public class Usuario implements Serializable
 	public void setAtivo(Boolean ativo) 
 	{
 		this.ativo = ativo;
+	}
+	
+	public float getSaldo() 
+	{
+		return saldo;
+	}
+	public void setSaldo(float saldo) 
+	{
+		this.saldo = saldo;
 	}
 }

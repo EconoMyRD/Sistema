@@ -52,10 +52,11 @@ var novoLancamento = {
         var subcategory  = document.getElementById('subcategory');
         var selectedSub = String(subcategory.options[subcategory.selectedIndex].value);
         var date = String(document.getElementById('date_transaction').value);  
-        
+        var category = document.getElementById('category');
+        var selectedCategory = String(category.options[category.selectedIndex].value);
         formatedDate = novoLancamento.formatDate(date);
         
-        novoLancamento.saveOnDataBase(description,value,selectedSub,formatedDate);
+        novoLancamento.saveOnDataBase(description,value,selectedSub,formatedDate,selectedCategory);
 
     },
 
@@ -67,10 +68,10 @@ var novoLancamento = {
         return result;
     },
 
-    saveOnDataBase: function(description,value, subcategory,date){
+    saveOnDataBase: function(description,value, subcategory,date, selectedCategory){
         var ajax= ajaxInit();
         if(ajax){
-            var url='http://localhost:8080/Economy/servlet?description='+description + '&value=' + value +  '&subcategory=' +                     subcategory + '&date_transaction=' + date;   
+            var url='http://localhost:8080/Economy/servlet?description='+description + '&value=' + value +  '&subcategory=' + subcategory + '&date_transaction=' + date + '&category=' + selectedCategory;   
 
             ajax.open('GET', url, true);
             ajax.send();

@@ -131,6 +131,7 @@ EntityManager em = HibernateUtil.getEntityManager();
 	}
 	
 	public float getTotal(int user){
+		System.out.println("gettotal user = " +user);
 		Query query =  em.createNativeQuery("select saldo from usuario  where usuario_id = ?");
 		query.setParameter(1, user);
 		 

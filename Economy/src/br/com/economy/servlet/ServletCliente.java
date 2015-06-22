@@ -38,6 +38,7 @@ public class ServletCliente extends HttpServlet {
 			usuario.setEmail(email);
 			usuario.setSenha(senha);
 			usuario.setAtivo(false);
+			usuario.setSaldo(0f);
 			
 			dao.Insert(usuario);
 			out.write("1");						//it can save the user on database

@@ -1,7 +1,6 @@
 package br.com.economy.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,11 +36,19 @@ public class ServletTransaction extends HttpServlet {
 		Date date_transaction = new Date();
 		float value;
 		int subcategory;
+		int userId=0;
 
-		Cookie cookie[] = request.getCookies();
-		if (cookie != null)
+		Cookie cookies[] = request.getCookies();
+		if (cookies != null)
 		{
-			int user = Integer.parseInt(cookie[0].getValue());	
+			//int user = Integer.parseInt(cookie[0].userid.getValue());	
+			
+			for(Cookie cookie : cookies){
+			    if("userId".equals(cookie.getName())){
+			        userId = Integer.parseInt(cookie.getValue());
+			    }
+			}
+			System.out.println("user =" + userId);
 			//int user = 1;
 
 			//System.out.println("date_transactionString" + date_transactionString);
@@ -58,11 +65,11 @@ public class ServletTransaction extends HttpServlet {
 
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");			
 				date_transaction = sdf.parse(date_transactionString);
-				System.out.println("date_transacrion" + date_transaction);
-				System.out.println("date_register" + date_register);
-				System.out.println(subcategory);
+//				System.out.println("date_transacrion" + date_transaction);
+//				System.out.println("date_register" + date_register);
+//				System.out.println(subcategory);
 
-				persistOnDataBase(value,date_transaction, date_register, description,subcategory,user, category);
+				persistOnDataBase(value,date_transaction, date_register, description,subcategory,userId, category);
 
 			} 
 			catch (ParseException e) 
