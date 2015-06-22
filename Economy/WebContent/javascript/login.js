@@ -10,15 +10,15 @@ $("#logar").live('click', function ()
 /*Carregar Menu para outras páginas*/
 $(document).ready(function()
 {  
-    $("#header").load("header.html");  
-    $("#footer").load("footer.html");
+    $("#header").load("html/header.html");  
+    $("#footer").load("html/footer.html");
+    $("#footerGerencial").load("footer.html");
     $("#lancamentos").load("lancamento.html");
     $("#headerGerencial").load("headerGerencial.html");
 }); 
 
 
 /*Carregar páginas com o clique*/
-/*
 $(document).ready(function() 
 {
     $('.menu-interno').click(function() 
@@ -28,6 +28,4 @@ $(document).ready(function()
         return false;
     });    
 });
-
-*/
 
