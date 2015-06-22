@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 public class TransactionDAO 
 {
 EntityManager em = HibernateUtil.getEntityManager();
-
+	
 	
 	public String getDataForGraphic(Date dateStart, Date dateEnd, int category){
 			

@@ -13,26 +13,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.economy.DAO.TransactionDAO;
-import br.com.economy.DAO.UsuarioDao;
 import br.com.economy.entities.Transacao;
 
 public class ServletTransaction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	TransactionDAO transacaoDAO = new TransactionDAO();
-	UsuarioDao usuarioDAO =  new UsuarioDao();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException 
 	{
 
-	
+		System.out.println("estou no doget");
+
 		// get values from the parameter request
 		String description = request.getParameter("description");
 		String valueString = request.getParameter("value");
 		String date_transactionString = request.getParameter("date_transaction");
-		int category =Integer.parseInt(request.getParameter("category"));
 		Date date_register = new Date();
 		Date date_transaction = new Date();
 		float value;
@@ -44,7 +42,7 @@ public class ServletTransaction extends HttpServlet {
 			int user = Integer.parseInt(cookie[0].getValue());	
 			//int user = 1;
 
-			//System.out.println("date_transactionString" + date_transactionString);
+			System.out.println("date_transactionString" + date_transactionString);
 			try 
 			{
 				// conversions
@@ -62,7 +60,7 @@ public class ServletTransaction extends HttpServlet {
 				System.out.println("date_register" + date_register);
 				System.out.println(subcategory);
 
-				persistOnDataBase(value,date_transaction, date_register, description,subcategory,user, category);
+				persistOnDataBase(value,date_transaction, date_register, description,subcategory,user);
 
 			} 
 			catch (ParseException e) 
@@ -77,7 +75,7 @@ public class ServletTransaction extends HttpServlet {
 	}
 
 	private void persistOnDataBase(float value,Date date_transaction,Date date_register,
-			String description, int subcategory,int user, int category) {
+			String description, int subcategory,int user) {
 
 		// set the object transaction
 		Transacao transaction = new Transacao();
@@ -88,15 +86,7 @@ public class ServletTransaction extends HttpServlet {
 		transaction.setSubcategoriaId(subcategory);
 		//instanciar objeto subcategoria com dados do banco para setar este atributo 
 		transaction.setUsuarioId(user);
-		//System.out.println("lets go insert");
-		
-		//persist on data base
-		if(transacaoDAO.verifyCategory(category)){		//true = +
-			usuarioDAO.setTotalMore(value, user);
-		}
-		else{
-			usuarioDAO.setTotalMinus(value, user);
-		}
+		System.out.println("lets go insert");
 		//persist on data base
 		transacaoDAO.Insert(transaction);
 

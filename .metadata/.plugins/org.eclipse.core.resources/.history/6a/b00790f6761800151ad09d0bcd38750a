@@ -32,7 +32,6 @@ public class ServletTransaction extends HttpServlet {
 		String description = request.getParameter("description");
 		String valueString = request.getParameter("value");
 		String date_transactionString = request.getParameter("date_transaction");
-		int category =Integer.parseInt(request.getParameter("category"));
 		Date date_register = new Date();
 		Date date_transaction = new Date();
 		float value;
@@ -62,7 +61,7 @@ public class ServletTransaction extends HttpServlet {
 				System.out.println("date_register" + date_register);
 				System.out.println(subcategory);
 
-				persistOnDataBase(value,date_transaction, date_register, description,subcategory,user, category);
+				persistOnDataBase(value,date_transaction, date_register, description,subcategory,user);
 
 			} 
 			catch (ParseException e) 

@@ -102,38 +102,4 @@ EntityManager em = HibernateUtil.getEntityManager();
 		em.getTransaction().commit();
 	}
 
-
-	public void setTotalMore(float value, int user) {		// update the total
-		float total = getTotal(user);
-		System.out.println(total);
-		float newTotal = total + value;
-		Query query = em.createNativeQuery("update usuario set saldo = ? where usuario_id = ?");
-		query.setParameter(1, newTotal);
-		query.setParameter(2, user);
-		
-		em.getTransaction().begin();
-		query.executeUpdate();
-		em.getTransaction().commit();
-	}
-	
-	
-	public void setTotalMinus(float value, int user){		// update the total
-		float total = getTotal(user);
-		System.out.println(total);
-		float newTotal = total - value;
-		Query query = em.createNativeQuery("update usuario set saldo = ? where usuario_id = ?");
-		query.setParameter(1, newTotal);
-		query.setParameter(2, user);
-		
-		em.getTransaction().begin();
-		query.executeUpdate();
-		em.getTransaction().commit();
-	}
-	
-	public float getTotal(int user){
-		Query query =  em.createNativeQuery("select saldo from usuario  where usuario_id = ?");
-		query.setParameter(1, user);
-		 
-		return (Float.parseFloat(query.getSingleResult().toString()));
-	}
 }

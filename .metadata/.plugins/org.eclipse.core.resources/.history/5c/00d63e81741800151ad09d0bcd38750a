@@ -19,26 +19,22 @@ import com.google.gson.Gson;
 public class TransactionDAO 
 {
 EntityManager em = HibernateUtil.getEntityManager();
-
+	
 	
 	public String getDataForGraphic(Date dateStart, Date dateEnd, int category){
 			
-			Query query = em.createNativeQuery("select  sum(t.valor) as value, s.nome as name, "
+			Query query = em.createNativeQuery("select  sum(t.valor) as value, s.nome as name, "// t.data_transacao as date, "
 				+ " s.subcategoria_id as subcategoria, s.categoria_id as categoria "
 				+ " from transacao t "
 				+ " join subcategoria s "
 				+ " on t.subcategoria = s.subcategoria_id "
-				+ " join usuario u "
-				+ " on t.usuario = u.usuario_id "
 				+ " where s.categoria_id = ? "
-				+ " and u.usuario_id = ?"
 				+ " and t.data_transacao between ? and ? "
 				+ " group by s.nome, s.subcategoria_id, s.categoria_id");
 		
 		query.setParameter(1, category);
-		query.setParameter(2, 1);			//catch  user from cookie
-		query.setParameter(3, dateStart);
-		query.setParameter(4, dateEnd);
+		query.setParameter(2, dateStart);
+		query.setParameter(3, dateEnd);
 		
 		List<Object[]> list = new ArrayList<Object[]>();
 		list = query.getResultList();
@@ -81,14 +77,10 @@ EntityManager em = HibernateUtil.getEntityManager();
 				+ " from transacao t "
 				+ " join subcategoria s "
 				+ " on t.subcategoria = s.subcategoria_id "
-				+ " join usuario u "
-				+ " on u.usuario_id = t.usuario "
 				+ " where s.nome = ? "
-				+ " and u.usuario_id = ?"
 				+ " and t.data_transacao between ? and ? ");
 		
 		query.setParameter(1, subcategory);
-		query.setParameter(2, 1);   //get user from cookie
 		query.setParameter(2, dateS);
 		query.setParameter(3, dateE);
 		
@@ -149,28 +141,4 @@ EntityManager em = HibernateUtil.getEntityManager();
 	public TransactionDAO() 
 	{
 	}
-
-
-	public boolean verifyCategory(int category) {
-		Query query = em.createNativeQuery("select c.categoria_id from categoria c where c.tipo = 1");	//retorna as categorias de credito
-		
-		List<Integer> list=  new ArrayList<Integer>();
-		list = query.getResultList();
-		
-		if(list.contains(category)){
-			return true;
-		}
-		else{
-			return false;			
-		}
-	}
 }
-
-
-
-
-
-
-
-
-
