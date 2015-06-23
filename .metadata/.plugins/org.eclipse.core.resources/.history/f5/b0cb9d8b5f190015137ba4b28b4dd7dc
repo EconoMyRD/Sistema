@@ -57,6 +57,7 @@ var novoLancamento = {
         formatedDate = novoLancamento.formatDate(date);
         
         novoLancamento.saveOnDataBase(description,value,selectedSub,formatedDate,selectedCategory);
+
     },
 
     //format date (dd/mm/yyyy)  for send to backend
@@ -115,6 +116,10 @@ var novoLancamento = {
 	   };
     
 	}
+    
+    
+
+
 };
 
 

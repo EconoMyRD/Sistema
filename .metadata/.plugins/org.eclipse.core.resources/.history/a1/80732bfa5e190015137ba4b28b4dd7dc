@@ -42,7 +42,7 @@ var loginSystem = {
 			message.innerHTML ='Usuário não cadastrado';
 		}
 		else if(active == '1'){
-			message.innerHTML='Usuário ainda não confirmado. Verifique seu email.';
+			message.innerHTML='Usuario ainda não confirmado. Verifique seu email.';
 		}
 		else if(active == '2'){
 			message.innerHTML = 'Senha incorreta';

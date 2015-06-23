@@ -26,7 +26,7 @@ var GetDadosFormulario =
 		},
 		
 		showMessageOK: function() {
-			var message = document.getElementById("messageOK");
+			var message = document.getElementById("message");
 			message.innerHTML = 'Acesse seu e-mail e confirme o cadastro';
 		},
 		

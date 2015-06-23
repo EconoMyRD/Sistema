@@ -50,6 +50,11 @@ var loginSystem = {
 		else{
 			window.location.href= 'http://localhost:8080/Economy/html/indexGerencial.html';
 		}
+	},
+	
+	clearForm: function()
+	{
+		
 	}
 	
 };

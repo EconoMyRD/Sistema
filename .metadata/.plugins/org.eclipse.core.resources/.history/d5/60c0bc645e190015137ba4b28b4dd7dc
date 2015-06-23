@@ -98,7 +98,6 @@
                         <input type="email" required class="inputText" name="email" placeholder="E-mail" />
                         <input type="password" required name="senha" class="inputText" placeholder="Senha" />
                         <input type="submit" id="BtnEnviar" class="botao width-50" value="Cadastrar"/>
-                        <p id="messageOK"> </p>
                     </form> 
                 </div>
             </div>

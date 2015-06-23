@@ -22,12 +22,7 @@ var GetDadosFormulario =
 		
 		showMessage: function() {
 			var message = document.getElementById("message");
-			message.innerHTML = 'Este email já foi utilizado em outra conta!';
-		},
-		
-		showMessageOK: function() {
-			var message = document.getElementById("messageOK");
-			message.innerHTML = 'Acesse seu e-mail e confirme o cadastro';
+			message.innerHTML = 'Este email j� foi utilizado em outra conta!';
 		},
 		
 		
@@ -44,8 +39,6 @@ var GetDadosFormulario =
 			ajax.open('GET', url, true);
 			ajax.send();
 			
-			GetDadosFormulario.clearForm(form);
-			GetDadosFormulario.showMessageOK();
 		},
 		
 		
@@ -86,9 +79,7 @@ var GetDadosFormulario =
 		
 		clearForm: function(form)
 		{
-			form.nome.value = "";
-			form.email.value = "";
-			form.senha.value = "";
+			
 		}
 };
 
